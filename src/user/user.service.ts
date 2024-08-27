@@ -1,9 +1,8 @@
-import { Injectable, Inject, BadRequestException } from '@nestjs/common';
+import { Injectable, BadRequestException } from '@nestjs/common';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
 import { DbService } from 'src/db/db.service';
 import { User } from './entities/user.entity';
-import { userInfo } from 'os';
 @Injectable()
 export class UserService {
   // @Inject(DbService)
@@ -27,7 +26,6 @@ export class UserService {
     return user;
   }
   async login(loginUserDto: LoginUserDto) {
-    console.log('111', loginUserDto);
     const users: User[] = await this.dbService.read();
     const foundUser = users.find(
       (item) => item.username === loginUserDto.username,

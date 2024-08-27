@@ -21,7 +21,6 @@ export class DbService {
     return JSON.parse(str);
   }
   async write(obj: Record<string, any>) {
-    console.log('write', obj, this.options.path, JSON.stringify(obj || []));
     await writeFile(this.options.path, JSON.stringify(obj || []), {
       encoding: 'utf-8',
     });
