@@ -3,7 +3,7 @@ import {
   Get,
   Post,
   Body,
-  Patch,
+  Put,
   Param,
   Delete,
   Query,
@@ -56,14 +56,13 @@ export class BookController {
     return this.bookService.findOneById(+id);
   }
 
-  @Patch('update')
-  update(@Body() updateBookDto: UpdateBookDto) {
+  @Put('update')
+  async update(@Body() updateBookDto: UpdateBookDto) {
     return this.bookService.update(updateBookDto);
   }
 
   @Delete('delete/:id')
   async delete(@Param('id') id: string) {
-    console.log('111', id); // 111 :459114
     return this.bookService.delete(+id);
   }
 }
